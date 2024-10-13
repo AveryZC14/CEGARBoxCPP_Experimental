@@ -10,17 +10,54 @@
 
 using namespace std;
 
+/**
+ * This is an abstract class for a logical formula. 
+ * Formulae are recursively defined, with one formula object holding one operator, E.G A&B is an object of the "And" class, which have the formulae A and B inside a set as a private variable.
+ */
 class Formula {
    public:
+    //constructor
     Formula();
+
+    //destructor
     virtual ~Formula();
 
+    /**
+     * Gives the string representation of this formula
+     *
+     * @return the string representation of this formula
+     */
     virtual string toString() const = 0;
+
+    /**
+     * Gets the type for this fomula
+     *
+     * @return the type for this fomula in the FormulaType enum type
+     */
     virtual FormulaType getType() const = 0;
 
+    /**
+     * Converts this formula into (NNF) Negated Normal Form
+     *
+     * @return this formula in Negated Normal Form
+     */
     virtual shared_ptr<Formula> negatedNormalForm() = 0;
+
+    /**
+     * Converts this formula into (NNF) Negated Normal Form
+     *
+     * @return this formula in Tail Normal Form
+     */
     virtual shared_ptr<Formula> tailNormalForm() = 0;
+
+    /**
+     * gives the negation of this fromula
+     *
+     * @return this formula negated
+     */
     virtual shared_ptr<Formula> negate() = 0;
+
+
     virtual shared_ptr<Formula> simplify() = 0;
     virtual shared_ptr<Formula> modalFlatten() = 0;
     virtual shared_ptr<Formula> axiomSimplify(int axiom, int depth) = 0;
