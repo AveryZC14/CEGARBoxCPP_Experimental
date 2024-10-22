@@ -201,10 +201,12 @@ void GlucoseSimpProver::prepareLtlClauses(ltl_clause_list modal_clauses,
 Glucose::Var GlucoseSimpProver::createOrGetVariable(string name,
                                                 Glucose::lbool polarity) {
   if (variableMap.find(name) == variableMap.end()) {
+    // convert
     bool bPolarity = true;
     if (polarity == l_False){
       bPolarity = false;
     }
+
     Glucose::Var newVar =calcSolver->newVar(bPolarity);  
     variableMap[name] = newVar;
     nameMap[variableMap[name]] = name;
