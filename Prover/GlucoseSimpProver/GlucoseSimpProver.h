@@ -50,7 +50,7 @@ private:
   shared_ptr<Glucose::vec<Glucose::Lit>>
   convertAssumptions(literal_set assumptions);
   literal_set
-  convertConflictToAssumps(Glucose::LSet &conflictLits);
+  convertConflictToAssumps(Glucose::vec<Glucose::Lit> &conflictLits);
 
   bool modelSatisfiesAssump(Literal assumption);
 

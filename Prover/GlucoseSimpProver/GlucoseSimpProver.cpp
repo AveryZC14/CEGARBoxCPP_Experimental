@@ -201,7 +201,11 @@ void GlucoseSimpProver::prepareLtlClauses(ltl_clause_list modal_clauses,
 Glucose::Var GlucoseSimpProver::createOrGetVariable(string name,
                                                 Glucose::lbool polarity) {
   if (variableMap.find(name) == variableMap.end()) {
-    Glucose::Var newVar =calcSolver->newVar(polarity);  
+    bool bPolarity = true;
+    if (polarity == l_False){
+      bPolarity = false;
+    }
+    Glucose::Var newVar =calcSolver->newVar(bPolarity);  
     variableMap[name] = newVar;
     nameMap[variableMap[name]] = name;
   }
@@ -257,7 +261,7 @@ bool GlucoseSimpProver::modelSatisfiesAssump(Literal assumption) {
 }
 
 literal_set GlucoseSimpProver::convertConflictToAssumps(
-    Glucose::LSet &conflictLits) {
+    Glucose::vec<Glucose::Lit> &conflictLits) {
   literal_set conflict;
   for (int i = 0; i < conflictLits.size(); i++) {
     conflict.insert(Literal(nameMap.at(Glucose::var(conflictLits[i])),
