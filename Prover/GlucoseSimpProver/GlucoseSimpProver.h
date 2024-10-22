@@ -12,7 +12,6 @@
 #include <exception>
 #include <memory>
 // #include <minisat/core/Solver.h>
-#include <minisat/simp/SimpSolver.h>
 #include "../../GlucoseSolver/glucose/simp/SimpSolver.h"
 #include <string>
 #include <unordered_map>
