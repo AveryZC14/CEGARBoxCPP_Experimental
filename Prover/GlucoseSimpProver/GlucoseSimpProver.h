@@ -13,6 +13,7 @@
 #include <memory>
 // #include <minisat/core/Solver.h>
 #include "../../GlucoseSolver/glucose/simp/SimpSolver.h"
+// #include <glucose/simp/SimpSolver.h>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>

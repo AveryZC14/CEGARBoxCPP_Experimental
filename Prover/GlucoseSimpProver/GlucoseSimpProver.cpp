@@ -1,3 +1,4 @@
+/*
 #include "GlucoseSimpProver.h"
 
 shared_ptr<Glucose::SimpSolver> GlucoseSimpProver::completeSolver = shared_ptr<Glucose::SimpSolver>(new Glucose::SimpSolver());
@@ -374,3 +375,4 @@ literal_set GlucoseSimpProver::getModel() {
                             
 }
 
+*/
