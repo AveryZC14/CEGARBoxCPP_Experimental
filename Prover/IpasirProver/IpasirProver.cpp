@@ -205,3 +205,7 @@ literal_set IpasirProver::getModel() {
     */
     return model;
 }
+
+void IpasirProver::prepareLtlfSat(LtlFormulaTriple clauses, Literal initialLiteral, bool succInSat){
+  return;
+}

@@ -62,6 +62,9 @@ public:
     shared_ptr<Lingeling> calcSolver;
     static shared_ptr<unordered_map<string, int>> completeVariableMap;
     shared_ptr<unordered_map<string, int>> calcVariableMap;
+
+    //patchwork
+    void prepareLtlfSat(LtlFormulaTriple clauses, Literal initialLiteral, bool succInSat) = 0;
 };
 
 #endif

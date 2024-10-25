@@ -1,8 +1,11 @@
 CC = g++
 CFLAGS = -std=c++17 -Wall -g -O3 -mavx2 -fopenmp -static 
 CFLAGS += -I/usr/local/include/antlr4-runtime
-LIBS = -L/usr/local/lib -lminisat -lantlr4-runtime 
+LIBS = -L/usr/local/lib -lminisat -lantlr4-runtime -lz
 SRCDIR = .
+MROOT = $(PWD)
+
+CFLAGS += -I$(MROOT) -I$(MROOT)/GlucoseSolver/glucose -I$(MROOT)/GlucoseSolver/glucose/mtl -I$(MROOT)/GlucoseSolver/glucose/core -I$(MROOT)/GlucoseSolver/glucose/utils -I$(MROOT)/GlucoseSolver/glucose/simp
 
 #LIBS += -lantlr4-runtime
 # CFLAGS += -I/usr/local/include/antlr4-runtime
@@ -24,10 +27,20 @@ ifneq ($(HAS_IPASIR),)
     SOURCES += $(IPASIR_SRC)
 endif
 
+# add required glucose folders.
+SOURCES += $(wildcard $(MROOT)/GlucoseSolver/glucose/simp/*.cc)
+SOURCES += $(wildcard $(MROOT)/GlucoseSolver/glucose/core/*.cc)
+SOURCES += $(wildcard $(MROOT)/GlucoseSolver/glucose/mtl/*.cc)
+SOURCES += $(wildcard $(MROOT)/GlucoseSolver/glucose/utils/*.cc)
+# SOURCES += $(MROOT)/GlucoseSolver/glucose/simp/SimpSolver.cc
+SOURCES := $(filter-out $(MROOT)/GlucoseSolver/glucose/simp/Main.cc, $(SOURCES))
+
 OBJECTS_MAIN = $(filter-out ./ltlmain.o, $(SOURCES:.cpp=.o))
 OBJECTS_LTLMAIN = $(filter-out ./main.o, $(SOURCES:.cpp=.o))
 EXECUTABLE_MAIN = kaleidoscope
 EXECUTABLE_LTLMAIN = lumen
+
+$(info SOURCES = $(SOURCES))
 
 all: $(EXECUTABLE_MAIN) $(EXECUTABLE_LTLMAIN)
 
