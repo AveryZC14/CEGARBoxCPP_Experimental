@@ -11,11 +11,11 @@ vector<shared_ptr<Trieform>> Trieform::topSort;
 
 bool Trieform::useOneSat = false;
 //                                                             new MinisatProver
-shared_ptr<Prover> Trieform::globalProver = shared_ptr<Prover>(new GlucoseSimpProver(false));
+shared_ptr<Prover> Trieform::globalProver = shared_ptr<Prover>(new GlucoseParaProver(false));
 
 Trieform::Trieform() {
     //                              use MinisatProver
-    prover = shared_ptr<Prover>(new GlucoseSimpProver(useOneSat));
+    prover = shared_ptr<Prover>(new GlucoseParaProver(useOneSat));
 }
 
 void Trieform::initialise(const shared_ptr<Formula> &formula,

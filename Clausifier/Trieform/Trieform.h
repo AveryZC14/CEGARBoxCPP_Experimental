@@ -3,6 +3,7 @@
 
 // #include <minisat/core/Solver.h>
 #include "../../GlucoseSolver/glucose/simp/SimpSolver.h"
+#include "../../GlucoseSolver/glucose/parallel/ParallelSolver.h"
 // #include <glucose/simp/SimpSolver.h>
 
 #include <climits>
@@ -22,6 +23,7 @@
 #include "../../Prover/IpasirProver/IpasirProver.h"
 // #include "../../Prover/MinisatProver/MinisatProver.h"
 #include "../../Prover/GlucoseSimpProver/GlucoseSimpProver.h"
+#include "../../Prover/GlucoseParaProver/GlucoseParaProver.h"
 #include "../Cache/Cache.h"
 #include "../Cache/PrefixCache/PrefixCache.h"
 #include "../FormulaTriple/FormulaTriple.h"
