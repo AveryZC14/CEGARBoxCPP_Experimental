@@ -16,3 +16,10 @@ callgrind*
 *.o
 massif*
 GlucoseSolver/
+S5Experiments/benchmarks/
+S5Experiments/scripts/S52SAT
+S5Experiments/scripts/S5Cheetah
+S5Experiments/scripts/LWB-benchmark-generator
+S5Experiments/scripts/lck
+S5Experiments/ksp-*
+minisat_lib
